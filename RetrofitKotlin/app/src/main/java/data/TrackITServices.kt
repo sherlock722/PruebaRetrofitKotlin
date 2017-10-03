@@ -25,13 +25,11 @@ class TrackITServices (apiKey : String, cacheDuration: Int){
 
 
         //Se crea un cliente okhttp (OkHttpClient) para añadir interceptores
-        //Este cliente se pasa por parametro a nuestro TrackITApiService (apiConfig)
         //y luego se añade a la configuracion del cliente que hace las peticiones
         val client = OkHttpClient().newBuilder()
                 .addInterceptor(TrackITInterceptor(apiKey, cacheDuration))
                 .build()
 
-        //apiConfig.setUpConfig(apiClientConfig)
 
         //Configuracion del cliente para hacer las peticiones
         //Se pasa en el GsonConverterFactory el gson con una configurción especifica
@@ -43,12 +41,9 @@ class TrackITServices (apiKey : String, cacheDuration: Int){
 
         //Indicar cual es la API a la que se va a comunicar (TrackITApi)
         // y se construye y crea la instancia del cliente (apiClient)
-        //apiClient = apiClientConfig.build().create(TrackITApi::class.java)
         apiClient = apiClientConfig.create(TrackITApi::class.java)
 
-        //Ya podría llamar a los métodos getPosition y getTerminalPosition
-        //apiClient.getPosition()
-        //apiClient.getTerminalPosition()
+
     }
 
 }
